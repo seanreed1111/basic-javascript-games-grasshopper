@@ -1,8 +1,15 @@
-var movePiece = function(event){
-  var location = event.target;
-  console.log(location);
-  if (location.className === "square") {
-    console.log("Can you spare a square?");
-  }
+function isNumber(testValue) {
+  return !isNaN(testValue)
 }
-var board = document.getElementById("board").addEventListener("click", movePiece);
+function findLocation(event){
+  var location = event.target.dataset.location;
+  console.log("location "+location);
+  return location
+}
+
+
+function updateBoard(location, board){
+
+}
+
+var board = document.getElementById("board").addEventListener("click", findLocation);
