@@ -1,5 +1,5 @@
 
-function load() {
+(function() {
   initBoard();
   setListeners();
 
@@ -24,7 +24,8 @@ function load() {
 
 
   function startGame(){
-    console.log("Starting new game");
+    console.log("Starting new game.");
+    console.log("Initializing Board. Setting Event Listeners");
   }
 
   function updateBoard(){
@@ -49,9 +50,7 @@ function load() {
     startButton.removeEventListener("click", startGame);
     endButton.removeEventListener("click", endGame);
   }
-}
-
-load();
+})();
 
 
 
