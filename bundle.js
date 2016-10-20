@@ -3,7 +3,7 @@
   var startButton = document.getElementById("startButton");
   var endButton = document.getElementById("endButton");
   var board = document.getElementById("board");
-  board.addEventListener("click", respondToBoardClick);
+
   startButton.addEventListener("click", startGame);
   endButton.addEventListener("click", endGame);
 
@@ -11,9 +11,6 @@
   var currentBoardArray = ["L","L","L","L","","R","R","R","R"];
   var winningBoardArray = ["R","R","R","R","","L","L","L","L"];
 
-
-// render the initial state
-// render()
   var clickLocation = null;
   var blankIndex = currentBoardArray.indexOf("");
 
@@ -27,6 +24,7 @@
       console.log("current board is" +currentBoardArray);
 
       updateUI(clickLocation, blankIndex);
+      checkforWinner();
       blankIndex = clickLocation; //reset for future moves
     }
   }
@@ -65,12 +63,23 @@
     initialPositionElement.innerHTML = "";
   }
 
+  function renderInitialState(){
 
+  }
 
+  function checkForWinner(){
+    if (winningBoardArray === currentBoardArray){
+      console.log("WINNER");
+      board.removeEventListener("click", respondToBoardClick);
+    }
+  }
 
 // startButton callback handler
   function startGame(){
-    console.log("Starting new game.");
+    init();
+    renderInitialState();
+    console.log("Starting new game...Good Luck!");
+    board.addEventListener("click", respondToBoardClick);
   }
 
 // startButton callback handler
@@ -81,6 +90,11 @@
     console.log("Event Listeners cleared");
   }
 
+function init(){
+  currentBoardArray = ["L","L","L","L","","R","R","R","R"];
+  winningBoardArray = ["R","R","R","R","","L","L","L","L"];
+  blankIndex = currentBoardArray.indexOf("");
+}
 
   function clearListeners(){
     board.removeEventListener("click", respondToBoardClick);
