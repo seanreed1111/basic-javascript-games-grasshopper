@@ -18,18 +18,18 @@
   function respondToBoardClick(event) {
     clickLocation = event.target.dataset.location;
 
-    if (validMove()) {
+    if (isValidMove()) {
       currentBoardArray[blankIndex] = currentBoardArray[clickLocation];
       currentBoardArray[clickLocation] = "";
       console.log("current board is" +currentBoardArray);
 
       updateUI(clickLocation, blankIndex);
-      checkforWinner();
+      checkForWinner();
       blankIndex = clickLocation; //reset for future moves
     }
   }
 
-  function validMove(){
+  function isValidMove(){
 
     console.log("You have clicked location " +clickLocation);
     console.log("that location has value " +currentBoardArray[clickLocation]);
@@ -68,8 +68,11 @@
   }
 
   function checkForWinner(){
-    if (winningBoardArray === currentBoardArray){
-      console.log("WINNER");
+    console.log("winningBoardArray is "+winningBoardArray);
+    console.log("currentBoardArray is "+currentBoardArray); 
+
+    if (JSON.stringify(winningBoardArray) == JSON.stringify(currentBoardArray)){ // the two arrays are the same
+      console.log("WINNER!!!!!!!!!!!")     
       board.removeEventListener("click", respondToBoardClick);
     }
   }
@@ -92,7 +95,6 @@
 
 function init(){
   currentBoardArray = ["L","L","L","L","","R","R","R","R"];
-  winningBoardArray = ["R","R","R","R","","L","L","L","L"];
   blankIndex = currentBoardArray.indexOf("");
 }
 
