@@ -1,6 +1,11 @@
-section {
+header {
+  font-size: 30px
+}
+
+section, nav {
   display: flex
 }
+
 
 section .square {
   margin-top: 50px;
@@ -12,9 +17,10 @@ section .square {
   border-radius: 5px;
 }
 
-.winner{
+#winner{
+
   padding-top: 30px;
-  display:  none;
+  display:
 }
 
 button {

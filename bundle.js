@@ -1,5 +1,6 @@
 
 (function() {
+ // init
   var startButton = document.getElementById("startButton");
   var endButton = document.getElementById("endButton");
   var board = document.getElementById("board");
@@ -7,7 +8,6 @@
   startButton.addEventListener("click", startGame);
   endButton.addEventListener("click", endGame);
 
- // starting and winning position
   var currentBoardArray = ["L","L","L","L","","R","R","R","R"];
   var winningBoardArray = ["R","R","R","R","","L","L","L","L"];
 
@@ -21,7 +21,7 @@
     if (isValidMove()) {
       currentBoardArray[blankIndex] = currentBoardArray[clickLocation];
       currentBoardArray[clickLocation] = "";
-      console.log("current board is" +currentBoardArray);
+      // console.log("current board is" +currentBoardArray);
 
       updateUI(clickLocation, blankIndex);
       checkForWinner();
@@ -31,10 +31,10 @@
 
   function isValidMove(){
 
-    console.log("You have clicked location " +clickLocation);
-    console.log("that location has value " +currentBoardArray[clickLocation]);
+    // console.log("You have clicked location " +clickLocation);
+    // console.log("that location has value " +currentBoardArray[clickLocation]);
 
-    console.log("The blank space is at index " +blankIndex);
+    // console.log("The blank space is at index " +blankIndex);
 
     var valid = (clickLocation != undefined 
       && Math.abs(clickLocation - blankIndex) <= 2
@@ -51,44 +51,48 @@
     // move the element from the initial position to the final position
     initialSelector = "[data-location=\"" + initialPosition.toString() + "\"]";    
     finalSelector = "[data-location=\"" + finalPosition.toString() + "\"]";
-    console.log('initialPositionSelector is '+initialSelector);
-    console.log('finalPositionSelector is '+finalSelector);
+    // console.log('initialPositionSelector is '+initialSelector);
+    // console.log('finalPositionSelector is '+finalSelector);
 
     initialPositionElement = document.querySelector(initialSelector);
     finalPositionElement = document.querySelector(finalSelector);
-    console.log('initialPositionElement is '+initialPositionElement.innerHTML);    
-    console.log('finalPositionElement is '+finalPositionElement.innerHTML);
+    // console.log('initialPositionElement is '+initialPositionElement.innerHTML);    
+    // console.log('finalPositionElement is '+finalPositionElement.innerHTML);
 
     finalPositionElement.innerHTML = initialPositionElement.innerHTML;
     initialPositionElement.innerHTML = "";
   }
 
-  function renderInitialState(){
-
-  }
-
   function checkForWinner(){
-    console.log("winningBoardArray is "+winningBoardArray);
-    console.log("currentBoardArray is "+currentBoardArray); 
+    // console.log("winningBoardArray is "+winningBoardArray);
+    // console.log("currentBoardArray is "+currentBoardArray); 
 
     if (JSON.stringify(winningBoardArray) == JSON.stringify(currentBoardArray)){ // the two arrays are the same
-      console.log("WINNER!!!!!!!!!!!")     
-      board.removeEventListener("click", respondToBoardClick);
+      console.log("WINNER!!!!!!!!!!!")
+      h1 = document.createElement("h1");
+      text1 = document.createTextNode("You Won!! Congratulations!");
+      text2 = document.createTextNode("Press Cmd-R to Play Again");
+
+      winner = document.getElementById("winner")
+      winner.appendChild(h1)
+            .appendChild(text1);
+      winner.appendChild(text2);
+
+      endGame();
     }
   }
 
 // startButton callback handler
   function startGame(){
     init();
-    renderInitialState();
     console.log("Starting new game...Good Luck!");
     board.addEventListener("click", respondToBoardClick);
   }
 
 // startButton callback handler
   function endGame() {
-    console.log("Bye Bye. Game Over");
-    console.log("Clearing Event Listeners");
+    console.log("Bye Bye. Ending Program..");
+    console.log("Clearing Event Listeners..");
     clearListeners();
     console.log("Event Listeners cleared");
   }
