@@ -1,6 +1,6 @@
 
 (function() {
- // init
+
   var startButton = document.getElementById("startButton");
   var endButton = document.getElementById("endButton");
   var board = document.getElementById("board");
@@ -31,11 +31,6 @@
 
   function isValidMove(){
 
-    // console.log("You have clicked location " +clickLocation);
-    // console.log("that location has value " +currentBoardArray[clickLocation]);
-
-    // console.log("The blank space is at index " +blankIndex);
-
     var valid = (clickLocation != undefined 
       && Math.abs(clickLocation - blankIndex) <= 2
       && clickLocation - blankIndex != 0)
@@ -51,21 +46,16 @@
     // move the element from the initial position to the final position
     initialSelector = "[data-location=\"" + initialPosition.toString() + "\"]";    
     finalSelector = "[data-location=\"" + finalPosition.toString() + "\"]";
-    // console.log('initialPositionSelector is '+initialSelector);
-    // console.log('finalPositionSelector is '+finalSelector);
 
     initialPositionElement = document.querySelector(initialSelector);
     finalPositionElement = document.querySelector(finalSelector);
-    // console.log('initialPositionElement is '+initialPositionElement.innerHTML);    
-    // console.log('finalPositionElement is '+finalPositionElement.innerHTML);
 
     finalPositionElement.innerHTML = initialPositionElement.innerHTML;
     initialPositionElement.innerHTML = "";
   }
 
   function checkForWinner(){
-    // console.log("winningBoardArray is "+winningBoardArray);
-    // console.log("currentBoardArray is "+currentBoardArray); 
+
 
     if (JSON.stringify(winningBoardArray) == JSON.stringify(currentBoardArray)){ // the two arrays are the same
       console.log("WINNER!!!!!!!!!!!")
