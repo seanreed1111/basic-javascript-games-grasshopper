@@ -10,15 +10,15 @@ The goal of the puzzle is to switch the grasshoppers to the opposite side.
 
 For example, if we represent the starting position as:
 
-L L L L   R R R R
-1 2 3 4 5 6 7 8 9
+L L L L   R R R R\n
+1 2 3 4 5 6 7 8 9\n
 
 (Note: position 5 is initially the blank space)
 
 Then the *winning* position reverses the "L"s and "R"s:
 
-R R R R   L L L L
-1 2 3 4 5 6 7 8 9
+R R R R   L L L L\n
+1 2 3 4 5 6 7 8 9\n
 
 
 HOW DO THE GRASSHOPPERS MOVE?
@@ -31,8 +31,8 @@ B) move one space into the blank space.
 
 For example, if we again represent the *starting* position as:
 
-L L L L   R R R R
-1 2 3 4 5 6 7 8 9
+L L L L   R R R R\n
+1 2 3 4 5 6 7 8 9\n
 
 
 
@@ -40,27 +40,27 @@ There are only *four* possible valid moves from this starting position:
 
 Either Position 4 MOVES TO Position 5..
 ---------------------------------------
-L L L   L R R R R
-1 2 3 4 5 6 7 8 9 
+L L L   L R R R R\n
+1 2 3 4 5 6 7 8 9\n
 
 
 OR Position 6 MOVES TO Position 5..
 ---------------------------------------
-L L L L R   R R R
-1 2 3 4 5 6 7 8 9 
+L L L L R   R R R\n
+1 2 3 4 5 6 7 8 9\n 
 
 
 
 OR Position 3 JUMPS TO Position 5..
 ---------------------------------------
-L L   L L R R R R
-1 2 3 4 5 6 7 8 9 
+L L   L L R R R R\n
+1 2 3 4 5 6 7 8 9\n 
 
 
 OR Position 7 JUMPS TO Position 5..
 ---------------------------------------
-L L L L R R   R R
-1 2 3 4 5 6 7 8 9 
+L L L L R R   R R\n
+1 2 3 4 5 6 7 8 9\n 
 
 Does that make sense? 
 
