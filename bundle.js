@@ -1,5 +1,5 @@
 
-(function() {
+(function main() {
 
   var startButton = document.getElementById("startButton");
   var endButton = document.getElementById("endButton");
@@ -9,7 +9,7 @@
   endButton.addEventListener("click", endGame);
 
   var currentBoardArray = ["L","L","L","L","","R","R","R","R"];
-  var winningBoardArray = ["R","R","R","R","","L","L","L","L"];
+  var WINNING_BOARD_STRING = JSON.stringify(["R","R","R","R","","L","L","L","L"]);
 
   var clickLocation = null;
   var blankIndex = currentBoardArray.indexOf("");
@@ -31,20 +31,14 @@
 
   function isValidMove(){
 
-    var valid = (clickLocation != undefined 
+    return (clickLocation !== undefined
       && Math.abs(clickLocation - blankIndex) <= 2
-      && clickLocation - blankIndex != 0)
-
-    if(!valid) {
-      console.log("Sorry, that move is not allowed");
-    }
-
-    return valid;
+      && clickLocation !== blankIndex)
   }
 
   function updateUI(initialPosition, finalPosition){
     // move the element from the initial position to the final position
-    initialSelector = "[data-location=\"" + initialPosition.toString() + "\"]";    
+    initialSelector = "[data-location=\"" + initialPosition.toString() + "\"]";
     finalSelector = "[data-location=\"" + finalPosition.toString() + "\"]";
 
     initialPositionElement = document.querySelector(initialSelector);
@@ -57,7 +51,7 @@
   function checkForWinner(){
 
 
-    if (JSON.stringify(winningBoardArray) == JSON.stringify(currentBoardArray)){ // the two arrays are the same
+    if (WINNING_BOARD_STRING === JSON.stringify(currentBoardArray)){
       console.log("WINNER!!!!!!!!!!!")
       h1 = document.createElement("h1");
       text1 = document.createTextNode("You Won!! Congratulations!");
@@ -79,7 +73,7 @@
     board.addEventListener("click", respondToBoardClick);
   }
 
-// startButton callback handler
+// endButton callback handler
   function endGame() {
     console.log("Bye Bye. Ending Program..");
     console.log("Clearing Event Listeners..");
@@ -97,6 +91,7 @@ function init(){
     startButton.removeEventListener("click", startGame);
     endButton.removeEventListener("click", endGame);
   }
+
 })();
 
 
